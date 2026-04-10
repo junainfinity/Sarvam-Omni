@@ -1,10 +1,10 @@
 <p align="center">
   <h1 align="center">SarvamOmni</h1>
   <p align="center">
-    <strong>Agentic Vision-Language Model for Indian Languages</strong>
+    <strong>Omnimodal AI for Indian Languages — Vision, Voice, Action</strong>
   </p>
   <p align="center">
-    Sarvam-30B MoE + Qwen3-VL Vision Encoder
+    Sarvam-30B MoE + Qwen3-VL Vision Encoder + Full-Duplex Voice (coming soon)
   </p>
 </p>
 
@@ -17,11 +17,12 @@
 </p>
 
 <p align="center">
+  <a href="#roadmap">Roadmap</a> ·
   <a href="#architecture">Architecture</a> ·
   <a href="#quickstart">Quickstart</a> ·
   <a href="#training">Training</a> ·
   <a href="#inference">Inference</a> ·
-  <a href="#action-space">Action Space</a> ·
+  <a href="#checkpoint-status">Results</a> ·
   <a href="#references">References</a>
 </p>
 
@@ -41,6 +42,65 @@
 ### Why This Matters
 
 No existing agentic GUI VLM supports Indian languages natively. Research shows **10-25% accuracy drops** when testing VLMs on Indian language content ([arxiv 2603.26742](https://arxiv.org/html/2603.26742)). SarvamOmni fills this gap with Sarvam-30B's 262K multilingual vocabulary trained on Indian language corpora.
+
+---
+
+## Roadmap
+
+SarvamOmni is being built in two major phases: **Vision** first, then **Voice**.
+
+```
+                            SarvamOmni Roadmap
+ ═══════════════════════════════════════════════════════════════
+
+ PHASE 1: VISION                                    [IN PROGRESS]
+ ─────────────────────────────────────────────────────────────────
+
+ Stage 1 ✅  Projector Alignment
+             Train MLP bridge between ViT and LLM
+             Dataset: the_cauldron | Loss: 2.12 → 1.89
+
+ Stage 1.5 🔄  Mid-Training (current: step 1000/5000)
+               Projector + LoRA r=32 on Sarvam-30B
+               Dataset: the_cauldron + 20% text mixing
+               Loss: 4.60 → 0.39
+
+ Stage 2 ⬜  Agentic GUI Grounding
+             Fine-tune on AGUVIS for click/type/scroll actions
+             Precise coordinate prediction on screenshots
+
+ Stage 3 ⬜  Evaluation & Optimization
+             Benchmark on VLM leaderboards
+             Quantization (AWQ/GPTQ) for faster inference
+             Indian language vision benchmarks
+
+ ─────────────────────────────────────────────────────────────────
+
+ PHASE 2: FULL-DUPLEX VOICE                              [PLANNED]
+ ─────────────────────────────────────────────────────────────────
+
+ Stage 4 ⬜  Speech Encoder Integration
+             Add speech encoder (e.g. Whisper / Indic-Whisper)
+             Train audio projector to LLM hidden space
+             Support Hindi, Tamil, Telugu + 20 more Indian languages
+
+ Stage 5 ⬜  Speech Decoder / TTS
+             Add streaming speech synthesis head
+             Enable real-time voice output in Indian languages
+
+ Stage 6 ⬜  Full-Duplex Voice-to-Voice
+             Simultaneous listen + speak (no turn-taking)
+             Interruptible, low-latency conversational AI
+             Vision + Voice unified: see screen, hear user, act
+
+ ═══════════════════════════════════════════════════════════════
+```
+
+### The Vision
+
+**Phase 1** makes SarvamOmni a capable vision-language model — it can see screenshots, describe images, and execute GUI actions across 22+ Indian languages.
+
+**Phase 2** adds full-duplex voice, making it a truly **omnimodal** assistant. Users will be able to speak naturally in their Indian language while SarvamOmni simultaneously listens, understands the screen, takes actions, and responds by voice — no waiting for turns, just natural conversation. Think of it as an AI that can see your screen, hear you speak in Hindi or Tamil, and talk back while navigating apps for you.
 
 ---
 
