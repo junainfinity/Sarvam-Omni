@@ -1,0 +1,30 @@
+# Stage 1: Projector Pre-training
+# Trains only MLP projector (33.6M params)
+# Frozen: Sarvam-30B + Qwen3-VL ViT
+
+model:
+  sarvam_path: "/Users/arjun/Projects/tqllm/models/sarvam-30b-backup"
+  vision_dir: "models/qwen3-vl-vit"
+  vision_dim: 4096    # Qwen3-VL-8B out_hidden_size
+  hidden_size: 4096   # Sarvam hidden_size
+  image_token_id: 8   # <|image_soft_token|>
+
+training:
+  lr: 1.0e-3
+  warmup_steps: 200
+  weight_decay: 0.0
+  grad_accum: 16
+  max_length: 512
+  image_size: 672     # Must be divisible by 32 (patch_size * spatial_merge)
+  max_steps: 0        # 0 = full epoch
+  save_every: 500
+  log_every: 10
+
+data:
+  dataset: "liuhaotian/LLaVA-Pretrain"  # 558K image-caption pairs
+  streaming: true
+
+hardware:
+  device: "mps"
+  dtype: "bfloat16"
+  gpu_memory_mb: 129024  # sudo sysctl iogpu.wired_limit_mb=129024

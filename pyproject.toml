@@ -1,0 +1,21 @@
+[project]
+name = "sarvam-omni"
+version = "0.1.0"
+description = "Agentic VLM: Sarvam-30B + Qwen3-VL vision encoder"
+requires-python = ">=3.11"
+dependencies = [
+    "torch>=2.4",
+    "torchvision",
+    "transformers>=4.57",
+    "accelerate",
+    "peft",
+    "pillow",
+    "datasets",
+    "wandb",
+    "huggingface_hub",
+    "safetensors",
+    "tqdm",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "ipython"]

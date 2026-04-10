@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+*.egg
+dist/
+build/
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# Large model weights (too big for GitHub)
+models/qwen3-vl-vit/vision_encoder.safetensors
+checkpoints/stage1/*.pt
+checkpoints/stage1_5/*/projector.pt
+checkpoints/stage1_5/*/lora/adapter_model.safetensors
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs (keep structure, ignore large logs)
+logs/*.log
+
+# Config with local paths
+config.json
